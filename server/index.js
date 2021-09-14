@@ -9,6 +9,7 @@ const server = app.listen(PORT, () =>
 );
 const io = require('socket.io')(server);
 const cors = require('cors');
+const seed = require('../seed');
 
 // handle sockets
 require('./socket')(io);
@@ -19,6 +20,10 @@ const corsOptions = {
   origin: 'https://unistackchat.herokuapp.com/',
   optionSuccessStatus: 200,
 };
+
+if (PROCESS.ENV.SEED === 'TRUE') {
+  seed();
+}
 
 db.sync().then(() => console.log('Database is synced'));
 
