@@ -5,7 +5,7 @@ import thunkMiddleware from 'redux-thunk';
 import axios from 'axios';
 import socket from '../socket';
 
-const serverUrl = 'https://unistackchat.herokuapp.com/';
+const serverUrl = 'https://unistackchat.herokuapp.com';
 
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
