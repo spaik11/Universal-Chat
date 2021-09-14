@@ -5,6 +5,8 @@ import thunkMiddleware from 'redux-thunk';
 import axios from 'axios';
 import socket from '../socket';
 
+const serverUrl = 'https://unistackchat.herokuapp.com/';
+
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
 );
@@ -41,14 +43,19 @@ export const setLanguage = (language) => ({
 });
 
 export const postMessage = (message) => async (dispatch) => {
-  const { data: newMessage } = await axios.post('/api/messages', message);
+  const { data: newMessage } = await axios.post(
+    `${serverUrl}/api/messages`,
+    message
+  );
 
   dispatch(gotNewMessageFromServer(newMessage));
   socket.emit('new-message', newMessage);
 };
 
 export const fetchMessages = (params) => async (dispatch) => {
-  const { data: messages } = await axios.get('/api/messages', { params });
+  const { data: messages } = await axios.get(`${serverUrl}/api/messages`, {
+    params,
+  });
   dispatch(gotMessagesFromServer(messages));
 };
 
@@ -65,7 +72,6 @@ const reducer = (state = initialState, action) => {
       return { ...state, messages: action.messages };
     case GOT_NEW_MESSAGE_FROM_SERVER:
       const msgIds = state.messages.map((message) => message.id);
-      console.log('REDUX ', action.message);
       if (msgIds.includes(action.message.id)) {
         return { ...state };
       } else {
