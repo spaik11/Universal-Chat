@@ -18,9 +18,10 @@ class ChannelList extends Component {
           <NavLink to={RANDOM_CHANNEL} activeClassName="active">
             <span># really_random</span>
             <span className="badge">
-              {this.props.messages &&
+              {
                 this.props.messages.filter((message) => message.channelId == 1)
-                  .length}
+                  .length
+              }
             </span>
           </NavLink>
         </li>
@@ -28,9 +29,10 @@ class ChannelList extends Component {
           <NavLink to={GENERAL_CHANNEL} activeClassName="active">
             <span># generally_speaking</span>
             <span className="badge">
-              {this.props.messages &&
+              {
                 this.props.messages.filter((message) => message.channelId == 2)
-                  .length}
+                  .length
+              }
             </span>
           </NavLink>
         </li>
@@ -38,9 +40,10 @@ class ChannelList extends Component {
           <NavLink to={LUNCH_CHANNEL} activeClassName="active">
             <span># lunch_planning</span>
             <span className="badge">
-              {this.props.messages &&
+              {
                 this.props.messages.filter((message) => message.channelId == 3)
-                  .length}
+                  .length
+              }
             </span>
           </NavLink>
         </li>

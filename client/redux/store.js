@@ -56,11 +56,12 @@ export const fetchMessages = (params) => async (dispatch) => {
   const { data: messages } = await axios.get(`${serverUrl}/api/messages`, {
     params,
   });
+
   dispatch(gotMessagesFromServer(messages));
 };
 
 const initialState = {
-  messages: [],
+  messages: [{ authorId: 1775, content: 'Welcome!!', channelId: 1 }],
   newMessageEntry: '',
   name: '',
   language: 'en',
