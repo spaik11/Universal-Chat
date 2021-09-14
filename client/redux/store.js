@@ -61,7 +61,7 @@ export const fetchMessages = (params) => async (dispatch) => {
 };
 
 const initialState = {
-  messages: [{ authorId: 1775, content: 'Welcome!!', channelId: 1 }],
+  messages: [],
   newMessageEntry: '',
   name: '',
   language: 'en',
