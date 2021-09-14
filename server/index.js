@@ -21,7 +21,7 @@ const corsOptions = {
   optionSuccessStatus: 200,
 };
 
-if (PROCESS.ENV.SEED === 'TRUE') {
+if (process.env.SEED === 'TRUE') {
   seed();
 }
 
